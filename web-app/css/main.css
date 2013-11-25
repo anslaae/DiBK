@@ -6,6 +6,7 @@ input, select, textarea {
 
 h1, h2, h3, h4, h5, h6 {
 	line-height: 1.1;
+	margin-bottom: 5px!important;
 }
 
 .ie6 html {
@@ -20,22 +21,131 @@ html * {
 	margin: 20px;
 }
 
-.well {
-	width: 45%;
-	float: left;
-	margin-top: 10px;
-	margin-right: 10px;
-	margin-left: 10px;
-	margin-bottom: 3px!important;
-	padding-top: 0px!important;
-	padding-bottom: 0px!important;
+#main .panel-heading {
+	padding-left: 88px;
+	background-image: url("/images/DiBk_logo_hvit_liten.png");
+	background-repeat: no-repeat;
+	background-size:75px;
+	height: 100px;
+	background-position: 5px;	
+}
+
+.logo {	
+	
 }
 
 .lister {
 	width: 100%;
 }
 
-.list-group-item:hover{
+.llist-group-item:hover{
 	background-color: #428BCA;
 	cursor: pointer;	
+}
+
+.lister .input-group{
+	width: 10px;
+}
+
+.lister .input-group>input{
+	width: 50px;
+}
+
+#aksjoner {
+	padding-bottom: 5px;	
+}
+
+#gbnr {
+	width: 350px;
+	padding-top: 5px;
+}
+
+#intro {
+	margin-bottom: 0;
+}
+
+#wizard h3{
+	margin-top: 0;
+	padding-top: 0;
+}
+
+#wizard{
+	padding-bottom: 0;
+}
+
+#valgtTiltak{
+	list-style: none;
+	margin-bottom: 0px;	
+}
+
+#egenskaper{
+	margin-bottom: 0px!important;
+}
+
+#resultatError, #resultatOk, #ikkeISamsvarMedPlan{
+	margin-bottom: 5px;
+}
+
+.well{
+	margin-bottom: 5px!important;
+	padding-top: 10px!important;
+	padding-bottom: 10px!important;
+}
+
+#valgteEgenskaper {
+	padding-top: 5px;
+}
+
+#tt {
+	 position:absolute;
+	 display:block;
+	 background:url(/images/tt_left.gif) top left no-repeat;
+ }
+ #tttop {
+	 display:block;
+	 height:5px;
+	 margin-left:5px;
+	 background:url(/images/tt_top.gif) top right no-repeat;
+	 overflow:hidden;
+ }
+ #ttcont {
+	 display:block;
+	 padding:2px 12px 3px 7px;
+	 margin-left:5px;
+	 background:#666;
+	 color:#fff;
+ }
+#ttbot {
+	display:block;
+	height:5px; 
+	margin-left:5px;  
+	background:url(/images/tt_bottom.gif) top right no-repeat; 
+	overflow:hidden;
+}
+
+.ui-widget-content.ui-dialog {
+    background: #F9F9F9;
+    border: 2px solid #E3E3E3!important;
+    color: #333333;
+}
+
+.ui-widget-header {
+  border: 2px solid #E3E3E3!important;
+  background: #428BCA!important;
+  background-image: none;
+  color: #333333;
+}
+
+hr {
+	color: #5BC0DE!important;
+	size: 5px!important;
+	-moz-border-bottom-colors: none!important;
+	-moz-border-image: none!important;
+	-moz-border-left-colors: none!important;
+	-moz-border-right-colors: none!important;
+	-moz-border-top-colors: none!important;
+	border-color: #5BC0DE -moz-use-text-color #5BC0DE!important;
+	border-style: solid none!important;
+	border-width: 1px 0!important;
+	margin: 18px 0!important;
 }
