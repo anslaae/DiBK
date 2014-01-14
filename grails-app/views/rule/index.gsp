@@ -14,13 +14,7 @@
 			<div class="alert alert-danger">Feil ved tilkobling til SMARTS</div>
 		</g:if>
 		<div class="alert alert-warning" id="intro">
-			<p>Nettbasert søknadsservice som gir deg dokumentasjon på om du må søke når du har oppgitt tiltak og hvor du skal bygge(kommune, gårdsnummer og bruksnummer for din eiendom).</p>			
-			<div class="input-group" style="width: 150px;">
-				<span class="input-group-addon">Er <a href="#" id="tool" title="" onmouseover="tooltip.show('<strong>Tiltak</strong><br/>Definert som bla bla bla ...<br/>... håtten tåtten tei ...', 300);" onmouseout="tooltip.hide();">tiltak<p class="tooltip">tut og kjør</p></a> i samsvar med plan</span>
-				<span class="input-group-addon">
-					<input name="samsvarMedPlan" type="checkbox">
-				</span>
-			</div>
+			<p>Nettbasert søknadsservice som gir deg dokumentasjon på om du må søke når du har oppgitt tiltak og hvor du skal bygge(kommune, gårdsnummer og bruksnummer for din eiendom).</p>				
 		</div>
 		<div class="panel-body" id="wizard">
 			<h3>
@@ -200,11 +194,18 @@
 							</ul>
 						</div>
 						
+						<div class="input-group" style="width: 150px;margin-bottom:5px;">
+							<span class="input-group-addon">Er <a href="#" id="tool" title="" onmouseover="tooltip.show('<strong>Tiltak</strong><br/>Definert som bla bla bla ...<br/>... håtten tåtten tei ...', 300);" onmouseout="tooltip.hide();">tiltak<p class="tooltip">tut og kjør</p></a> i samsvar med plan</span>
+							<span class="input-group-addon">
+								<input name="samsvarMedPlan" type="checkbox">
+							</span>
+						</div>
+						
 						<div class="btn-group" id="aksjoner">
 							<button type="button" class="btn btn-default" onclick="endre()">Tilpass</button>
 							<button type="button" class="btn btn-default" onclick="vurder()">Vurder</button>
 						</div>
-												
+																		
 						<div class="alert alert-info alert" id="resultatOk" hidden="true">
 							<button type="button" class="close" onclick="lukkMelding(this)">&times;</button>
 							<p class="resultat"></p>

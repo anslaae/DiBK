@@ -22,7 +22,6 @@ class RuleService {
 		if(!client || !sessionID){
 			try{
 				println "Debug [connect]: Kobler til SMARTS"
-				println grailsApplication.config.smarts.key
 				String key = grailsApplication.config.smarts.key;
 				String appId = grailsApplication.config.smarts.appId;
 
@@ -100,7 +99,7 @@ class RuleService {
 				println "Debug [vurder]: " + jsonResponse.Success
 				println "Debug [vurder]: " + response
 				if(jsonResponse.Success){
-					return [svar: jsonResponse.Body.Documents.Svar.søknadstype[0], urler: jsonResponse.Body.Documents.Svar.urlGjeldendeRegler[0]]
+					return [svar: jsonResponse.Body.Documents.Svar.soknadstype[0], urler: jsonResponse.Body.Documents.Svar.urlGjeldendeRegler[0]]
 				}
 			} catch (Exception e){
 				println "Feil ved tilkobling til SMARTS [vurder]: " + e.message

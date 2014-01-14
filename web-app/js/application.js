@@ -75,6 +75,9 @@ var tooltip=function(){
 
 
 function flytt(item) {
+	$("#ikkeISamsvarMedPlan").hide(100);
+	$('#resultatError').hide(100);	
+	$('#resultatOk').hide(100);
 	if (item.parentNode.parentNode.parentNode.id == "egenskaper") {
 		$(item).children().removeClass("glyphicon-plus-sign").addClass("glyphicon-minus-sign"); 
 		item.parentNode.parentNode.parentNode.removeChild(item.parentNode.parentNode);
@@ -119,6 +122,7 @@ function vurder() {
 				console.log(r);
 				if(r.status != null && r.status){
 					$('#resultatOk .resultat').text(r.svar);
+					$('#resultatOk .urler').empty();
 					if(r.urler != null){
 						r.urler.forEach(function(entry) {
 							$('#resultatOk .urler').append('<li><a href="'+entry+'"+>'+entry+'</a></li>')
