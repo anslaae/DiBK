@@ -39,6 +39,8 @@ class RuleService {
 
 				return 	jsonResponse.Success
 			} catch (Exception e){
+				client = null
+				sessionID = null
 				println "Feil ved tilkobling til SMARTS [connect]: " + e.message
 			}
 		} else {			
@@ -54,8 +56,7 @@ class RuleService {
 				JSON.use('deep')
 				String response = client.Evaluate(sessionID, "MuligeTiltak decision", "["+req+"]");
 				def jsonResponse = JSON.parse(response)
-				println "Debug [getTiltak]: " + jsonResponse.Success
-				println "Debug [getTiltak]: " +response
+				println "Debug [getTiltak]: " + jsonResponse.Success				
 				return [tiltak: jsonResponse.Body.Documents.Svar.Tiltak[0], egenskaper: jsonResponse.Body.Documents.Svar.MuligEgenskap[0]]
 			} catch (Exception e){
 				println "Feil ved tilkobling til SMARTS [getTiltak]: " + e.message
@@ -96,8 +97,7 @@ class RuleService {
 				JSON.use('deep')
 				String response = client.Evaluate(sessionID, "Vurder sakstype decision", "["+req+"]");
 				def jsonResponse = JSON.parse(response)
-				println "Debug [vurder]: " + jsonResponse.Success
-				println "Debug [vurder]: " + response
+				println "Debug [vurder]: " + jsonResponse.Success				
 				if(jsonResponse.Success){
 					return [svar: jsonResponse.Body.Documents.Svar.soknadstype[0], urler: jsonResponse.Body.Documents.Svar.urlGjeldendeRegler[0]]
 				}
