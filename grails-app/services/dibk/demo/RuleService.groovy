@@ -18,8 +18,10 @@ class RuleService {
 	def sessionID
 	def grailsApplication
 	
+	def timeout
+	
 	def connect(){
-		if(!client || !sessionID){
+		//if(!client || !sessionID){
 			try{
 				println "Debug [connect]: Kobler til SMARTS"
 				String key = grailsApplication.config.smarts.key;
@@ -30,8 +32,10 @@ class RuleService {
 
 				SlRestClientConfig config = new SlRestClientConfig()
 				config.setServiceUrl(grailsApplication.config.smarts.url)
+	//			config.setConnectionTimeout(10)
 				client = new SlRestClient(config, appId, key)
 
+				//timeout = 
 				String response = client.Connect(username, password, grailsApplication.config.smarts.workspace, grailsApplication.config.smarts.project);				
 				JSON.use('deep')
 				def jsonResponse = JSON.parse(response)
@@ -43,9 +47,9 @@ class RuleService {
 				sessionID = null
 				println "Feil ved tilkobling til SMARTS [connect]: " + e.message
 			}
-		} else {			
-			return true
-		}
+//		} else {
+//			return true
+//		}
 	}
 		
 	def getTiltak(def lokasjon, def gnr, def bnr) {		

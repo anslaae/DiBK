@@ -29,7 +29,7 @@ class RuleController {
 			}
 			[connected:  c, resultat: resultat.tiltak, tiltak: tiltak, egenskaper: resultat.egenskaper, valgteEgenskaper: valgteEgenskaper, muligeEgenskaper: muligeEgenskaper]
 		}else if(params.lokasjon){
-			[connected: ruleService.connect(), resultat: ruleService.getTiltak(params.lokasjon, params.gnr, params.bnr).tiltak]			
+			[connected: ruleService.connect(), resultat: ruleService.getTiltak(params.lokasjon, params.gnr, params.bnr)?.tiltak]			
 		} else {
 			[connected: ruleService.connect()]
 		}
