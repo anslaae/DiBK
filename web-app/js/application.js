@@ -125,7 +125,11 @@ function vurder() {
 					$('#resultatOk .urler').empty();
 					if(r.urler != null){
 						r.urler.forEach(function(entry) {
-							$('#resultatOk .urler').append('<li><a href="'+entry+'"+>'+entry+'</a></li>')
+							if(entry.match("^http")){
+								$('#resultatOk .urler').append('<li><a href="'+entry+'"+>'+entry+'</a></li>')								
+							} else {
+								$('#resultatOk .urler').append('<li><a href="pdf/'+entry+'"+>'+entry+'</a></li>')
+							}							
 						});
 					}
 					$('#resultatOk').show(500);

@@ -21,11 +21,12 @@ class RuleController {
 						valgteEgenskaper += it
 					} else {
 						muligeEgenskaper += it
-					}				
+					}
+									
 				}
 				valgteEgenskaper.each{
 					it.verdi = tiltak.Egenskap.find{ ve ->
-						ve.name == it.name
+						ve.navn == it.navn
 					}.verdi
 				}
 				[connected:  c, tiltakListe: resultat.tiltak, tiltak: tiltak, egenskaper: resultat.egenskaper, valgteEgenskaper: valgteEgenskaper, muligeEgenskaper: muligeEgenskaper]
