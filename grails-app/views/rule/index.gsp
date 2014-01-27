@@ -47,7 +47,7 @@
 					</span>
 				</div>
 			</h3>
-			<g:if test="${resultat}">
+			<g:if test="${tiltakListe}">
 				<div>
 					<h3>
 						<span class="label label-info">Velg tiltak</span>
@@ -60,9 +60,9 @@
 								<span class="sr-only">Toggle Dropdown</span><span class="caret"></span>
 							</button>							
 							<ul class="dropdown-menu" role="menu">
-								<g:each var="tiltak" in="${resultat}">
-									<li role="presentation"	class="${params.tiltak == tiltak.tiltaksnavn ? 'active' : '' }">
-										<a role="menuitem" tabindex="-1" href="?lokasjon=${params.lokasjon}&tiltak=${tiltak.tiltaksnavn}">${tiltak.tiltaksnavn} - ${tiltak.alias}</a>
+								<g:each var="t" in="${tiltakListe}">
+									<li role="presentation"	class="${params.tiltak == t.tiltaksnavn ? 'active' : '' }">
+										<a role="menuitem" tabindex="-1" href="?lokasjon=${params.lokasjon}&tiltak=${t.tiltaksnavn}">${t.tiltaksnavn} - ${t.alias}</a>
 									</li>
 								</g:each>
 								<!-- dummy-tilltak -->
@@ -287,7 +287,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="panel-footer">			
+		<div class="panel-footer">
+		<g:if test="${feil}">
+			<div class="alert alert-danger">
+				<strong>${feil}</strong>
+				<div>${resultatDebug}</div>
+			</div>
+		</g:if>			
 		</div>
 	</div>	
 </body>

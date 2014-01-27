@@ -15,21 +15,30 @@ class RuleController {
 			def tiltak = resultat.tiltak.find{ it.tiltaksnavn == params.tiltak }
 			def valgteEgenskaper = []
 			def muligeEgenskaper = []
-			resultat.egenskaper.each{
-				if(tiltak.Egenskap.navn.contains(it.navn)){
-					valgteEgenskaper += it
-				} else {
-					muligeEgenskaper += it
-				}				
+			if(resultat && tiltak){
+				resultat.egenskaper.each{
+					if(tiltak.Egenskap.navn.contains(it.navn)){
+						valgteEgenskaper += it
+					} else {
+						muligeEgenskaper += it
+					}				
+				}
+				valgteEgenskaper.each{
+					it.verdi = tiltak.Egenskap.find{ ve ->
+						ve.name == it.name
+					}.verdi
+				}
+				[connected:  c, tiltakListe: resultat.tiltak, tiltak: tiltak, egenskaper: resultat.egenskaper, valgteEgenskaper: valgteEgenskaper, muligeEgenskaper: muligeEgenskaper]
+			} else {
+				[connected:  c, feil: "Uventet resultat", resultatDebug: resultat]
 			}
-			valgteEgenskaper.each{
-				it.verdi = tiltak.Egenskap.find{ ve ->
-					ve.name == it.name
-				}.verdi
-			}
-			[connected:  c, resultat: resultat.tiltak, tiltak: tiltak, egenskaper: resultat.egenskaper, valgteEgenskaper: valgteEgenskaper, muligeEgenskaper: muligeEgenskaper]
 		}else if(params.lokasjon){
-			[connected: ruleService.connect(), resultat: ruleService.getTiltak(params.lokasjon, params.gnr, params.bnr)?.tiltak]			
+			def c = ruleService.connect()
+			def tiltak = ruleService.getTiltak(params.lokasjon, params.gnr, params.bnr)?.tiltak
+			if(tiltak)
+				[connected: c, tiltakListe: tiltak]
+			else
+				[connected: c, feil: "Ingen tiltak definert"]
 		} else {
 			[connected: ruleService.connect()]
 		}
