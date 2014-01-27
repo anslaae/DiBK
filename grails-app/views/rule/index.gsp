@@ -46,9 +46,9 @@
 						<button type="button" class="btn btn-default" onclick="valgtLokasjon()">Oppdater</button>
 					</span>
 				</div>
-			</h3>
-			<g:if test="${tiltakListe}">
-				<div>
+			</h3>			
+			<div>
+				<g:if test="${tiltakListe}">
 					<h3>
 						<span class="label label-info">Velg tiltak</span>
 						<div class="btn-group" style="width: 500px;margin-top: 5px;">
@@ -62,7 +62,7 @@
 							<ul class="dropdown-menu" role="menu">
 								<g:each var="t" in="${tiltakListe}">
 									<li role="presentation"	class="${params.tiltak == t.tiltaksnavn ? 'active' : '' }">
-										<a role="menuitem" tabindex="-1" href="?lokasjon=${params.lokasjon}&tiltak=${t.tiltaksnavn}">${t.tiltaksnavn} - ${t.alias}</a>
+										<a role="menuitem" tabindex="-1" href="?lokasjon=${params.lokasjon}&gnr=${params.gnr}&bnr=${params.bnr}&tiltak=${t.tiltaksnavn}">${t.tiltaksnavn} - ${t.alias}</a>
 									</li>
 								</g:each>
 								<!-- dummy-tilltak -->
@@ -183,46 +183,47 @@
 							</ul>							
 						</div>
 					</h3>
-					<g:if test="${tiltak}">
-						<div class="well">
-							<ul class="list-group" id="valgtTiltak">
-								<g:each var="t" in="${tiltak.Egenskap}">
-									<li class="${t.navn}">
-										${t.beskrivendeTekst}
-									</li>
-								</g:each>
-							</ul>
-						</div>
-						
-						<div class="input-group" style="width: 150px;margin-bottom:5px;">
-							<span class="input-group-addon">Er <a href="#" id="tool" title="" onmouseover="tooltip.show('<strong>Tiltak</strong><br/>Definert som bla bla bla ...<br/>... håtten tåtten tei ...', 300);" onmouseout="tooltip.hide();">tiltak<p class="tooltip">tut og kjør</p></a> i samsvar med plan</span>
-							<span class="input-group-addon">
-								<input name="samsvarMedPlan" type="checkbox">
-							</span>
-						</div>
-						
-						<div class="btn-group" id="aksjoner">
-							<button type="button" class="btn btn-default" onclick="endre()">Tilpass</button>
-							<button type="button" class="btn btn-default" onclick="vurder()">Vurder</button>
-						</div>
-																		
-						<div class="alert alert-info alert" id="resultatOk" hidden="true">
-							<button type="button" class="close" onclick="lukkMelding(this)">&times;</button>
-							<p class="resultat"></p>
-							<ul class="urler"></ul>							
-						</div>
-						<div class="alert alert-danger alert" id="ikkeISamsvarMedPlan" hidden="true">
-							<button type="button" class="close" onclick="lukkMelding(this)">&times;</button>
-							<p>Tiltak må være i samsvar med plan for å vurderes</p>
-						</div>
-						<div class="alert alert-danger alert" id="resultatError" hidden="true">
-							<button type="button" class="close" onclick="lukkMelding(this)">&times;</button>
-							<p>Kunne ikke gjennomføre vurdering</p>
-							<p class="melding" hidden="true"></p>											
-						</div>						
-					</g:if>
-				</div>
-			</g:if>
+				</g:if>
+				<g:if test="${tiltak}">
+					<div class="well">
+						<ul class="list-group" id="valgtTiltak">
+							<g:each var="t" in="${tiltak.Egenskap}">
+								<li class="${t.navn}">
+									${t.beskrivendeTekst}
+								</li>
+							</g:each>
+						</ul>
+					</div>
+					
+					<div class="input-group" style="width: 150px;margin-bottom:5px;">
+						<span class="input-group-addon">Er <a href="#" id="tool" title="" onmouseover="tooltip.show('<strong>Tiltak</strong><br/>Definert som bla bla bla ...<br/>... håtten tåtten tei ...', 300);" onmouseout="tooltip.hide();">tiltak<p class="tooltip">tut og kjør</p></a> i samsvar med plan</span>
+						<span class="input-group-addon">
+							<input name="samsvarMedPlan" type="checkbox">
+						</span>
+					</div>
+					
+					<div class="btn-group" id="aksjoner">
+						<button type="button" class="btn btn-default" onclick="endre()">Tilpass</button>
+						<button type="button" class="btn btn-default" onclick="vurder()">Vurder</button>
+					</div>
+																	
+					<div class="alert alert-info alert" id="resultatOk" hidden="true">
+						<button type="button" class="close" onclick="lukkMelding(this)">&times;</button>
+						<p class="resultat"></p>
+						<ul class="urler"></ul>							
+					</div>
+					<div class="alert alert-danger alert" id="ikkeISamsvarMedPlan" hidden="true">
+						<button type="button" class="close" onclick="lukkMelding(this)">&times;</button>
+						<p>Tiltak må være i samsvar med plan for å vurderes</p>
+					</div>
+					<div class="alert alert-danger alert" id="resultatError" hidden="true">
+						<button type="button" class="close" onclick="lukkMelding(this)">&times;</button>
+						<p>Kunne ikke gjennomføre vurdering</p>
+						<p class="melding" hidden="true"></p>											
+					</div>						
+				</g:if>
+			</div>
+			
 
 			<div class="lister" id="tilpassTiltak" hidden="true">
 				<div class="well">
