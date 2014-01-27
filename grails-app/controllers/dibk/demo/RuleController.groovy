@@ -16,13 +16,12 @@ class RuleController {
 			def valgteEgenskaper = []
 			def muligeEgenskaper = []
 			if(resultat && tiltak){
-				resultat.egenskaper.each{
+				resultat.egenskaper.sort{ it.rekkefolge }.each{
 					if(tiltak.Egenskap.navn.contains(it.navn)){
 						valgteEgenskaper += it
 					} else {
 						muligeEgenskaper += it
 					}
-									
 				}
 				valgteEgenskaper.each{
 					it.verdi = tiltak.Egenskap.find{ ve ->
@@ -39,7 +38,7 @@ class RuleController {
 			if(tiltak)
 				[connected: c, tiltakListe: tiltak]
 			else
-				[connected: c, feil: "Ingen tiltak definert"]
+				[connected: c]
 		} else {
 			[connected: ruleService.connect()]
 		}
