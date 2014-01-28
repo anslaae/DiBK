@@ -239,7 +239,7 @@
 											</button>
 											<span class="input-group-addon">${t.ledetekst}</span>
 											<span class="input-group-addon">
-												<input name="${t.navn}" type="checkbox" checked="${t.value ? 'checked' : '' }">
+												<input name="${t.navn}" type="checkbox" ${t.verdi == 'true' ? 'checked' : '' }>
 											</span>
 										</div>
 									</g:if>
